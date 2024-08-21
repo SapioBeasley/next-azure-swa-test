@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Create next (latest) project
 
-## Getting Started
+$ npx create-next-app@latest {project-name}
 
-First, run the development server:
+use noStore(); to dynamically render component if needed (What is this actually doing? Date is still incrementing on refresh)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Note
+This example forces dynamic rendering of this component to demonstrate server-rendering of the server's current time. The App Router model of Next.js recommends caching individual data requests to optimize the performance of your Next.js app. Read more on data fetching and caching in Next.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NOTE
+When application size exceeds 250 MB, the Next.js Output File Tracing feature helps optimize the app size and enhance performance. https://nextjs.org/docs/pages/api-reference/next-config-js/output
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# create subscription
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# create app service
 
-## Learn More
+## connect github repo to app service
 
-To learn more about Next.js, take a look at the following resources:
+## Review/create and deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+NOTE
+Wait for Github to run CI action to deploy app
