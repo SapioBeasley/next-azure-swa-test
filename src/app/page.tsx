@@ -17,7 +17,7 @@ const Home = async () => {
 
   const timeOnServer = dayjs().format('h:mm:ss A');
 
-  const response = await fetch('http://localhost:3000/api/failed-banks');
+  const response = await fetch(`${process.env.APP_HOST}/api/failed-banks`);
 
   if (!response.ok) {
     throw new Error('Failed to fetch data');

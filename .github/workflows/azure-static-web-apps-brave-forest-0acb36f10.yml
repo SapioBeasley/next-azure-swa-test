@@ -37,6 +37,7 @@ jobs:
       PRE_BUILD_COMMAND: 'npm install -g prisma@5.18.0'
       CUSTOM_BUILD_COMMAND: 'npm install @prisma/client@5.18.0 && npm run build'
       POST_BUILD_COMMAND: 'npm install @prisma/client@5.18.0'
+      APP_HOST: 'https://brave-forest-0acb36f10.5.azurestaticapps.net' # move to github secrets
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
