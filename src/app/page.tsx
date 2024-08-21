@@ -33,8 +33,14 @@ const Home = async () => {
 
   return (
     <Main>
+      {process.env.APP_HOST}
       <Section>
         <Container className='space-y-4'>
+          <div>
+            This is a Next.js application hosted on Azure Static Web Apps with
+            hybrid rendering. The time on the server is{' '}
+            <strong>{`dayjs: ${timeOnServer}`}</strong>.
+          </div>
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
             <Card>
               <CardHeader>
@@ -122,12 +128,6 @@ const Home = async () => {
           <Card>
             <FailuresTimelineBarChart data={failuresTimeline} />
           </Card>
-
-          <div>
-            This is a Next.js application hosted on Azure Static Web Apps with
-            hybrid rendering. The time on the server is{' '}
-            <strong>{`dayjs: ${timeOnServer}`}</strong>.
-          </div>
         </Container>
       </Section>
     </Main>
