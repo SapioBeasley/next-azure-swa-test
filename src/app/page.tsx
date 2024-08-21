@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
-// import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_noStore as noStore } from 'next/cache';
 
 const Home = () => {
-  // noStore();
+  noStore();
 
   const timeOnServer = dayjs().format('h:mm:ss A');
 
