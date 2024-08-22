@@ -2,13 +2,25 @@
 
 // const prisma = new PrismaClient();
 
-import appInsights from 'applicationinsights';
+// import appInsights from 'applicationinsights';
+import {
+  ApplicationInsights,
+  SeverityLevel,
+} from '@microsoft/applicationinsights-web';
 
-const appInsightsClient = new appInsights.TelemetryClient();
+// const appInsightsClient = new appInsights.TelemetryClient();
+const applicationInsights = new ApplicationInsights({
+  config: {
+    connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
+  },
+});
+
+applicationInsights.loadAppInsights();
+applicationInsights.trackPageView();
 
 const GET = async () => {
   try {
-    throw new Error('Tersting insights');
+    throw new Error('Testing insights');
     // const totalFailedBanks = await prisma.failedBank.count();
     // const failuresByState = await prisma.failedBank.groupBy({
     //   by: ['state'],
@@ -662,9 +674,9 @@ const GET = async () => {
   } catch (error) {
     console.error(error);
 
-    appInsightsClient.trackException({
+    applicationInsights.trackException({
       exception: error instanceof Error ? error : (error as Error),
-      severity: 'UnknownError',
+      severityLevel: SeverityLevel.Error,
     });
 
     let errorMessage = error instanceof Error ? error.message : 'Unknown error';
