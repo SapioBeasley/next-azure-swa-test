@@ -37,6 +37,7 @@ jobs:
           PRE_BUILD_COMMAND: 'npm install -g prisma@5.18.0'
           CUSTOM_BUILD_COMMAND: 'npm install @prisma/client@5.18.0 && npm run build'
           POST_BUILD_COMMAND: 'npm install @prisma/client@5.18.0'
+          # DATABASE_URL: 'sqlserver://next-azure-swa-test-db-server.database.windows.net:1433;database=next-azure-swa-test-db;user=testing;password=q12we34rt5^YHGFDSAQ!;encrypt=true'
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
