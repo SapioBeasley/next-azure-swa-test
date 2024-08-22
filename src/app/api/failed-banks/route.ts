@@ -2,13 +2,11 @@
 
 // const prisma = new PrismaClient();
 
-// import appInsights from 'applicationinsights';
 import {
   ApplicationInsights,
   SeverityLevel,
 } from '@microsoft/applicationinsights-web';
 
-// const appInsightsClient = new appInsights.TelemetryClient();
 const applicationInsights = new ApplicationInsights({
   config: {
     connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
