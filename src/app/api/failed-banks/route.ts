@@ -7,7 +7,6 @@ import applicationInsights from '@/modules/applicationInsights';
 
 const GET = async () => {
   try {
-    throw new Error('Testing insights');
     // const totalFailedBanks = await prisma.failedBank.count();
     // const failuresByState = await prisma.failedBank.groupBy({
     //   by: ['state'],
