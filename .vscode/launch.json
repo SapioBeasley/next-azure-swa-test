@@ -5,7 +5,7 @@
       "name": "Next.js: debug full stack",
       "type": "node-terminal",
       "request": "launch",
-      "command": "yarn dev",
+      "command": "node --require ./appinsights-preload.js node_modules/next/dist/bin/next dev",
       "serverReadyAction": {
         "pattern": "- Local:.+(https?://.+)",
         "uriFormat": "%s"

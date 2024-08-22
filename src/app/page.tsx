@@ -8,17 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import applicationInsights from '@/modules/applicationInsights';
+// import applicationInsights from '@/modules/applicationInsights';
 import dayjs from 'dayjs';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const Home = async () => {
-  applicationInsights.trackPageView({
-    name: 'Home',
-    isLoggedIn: false,
-    uri: '/',
-  });
+  // applicationInsights.trackPageView({
+  //   name: 'Home',
+  //   isLoggedIn: false,
+  //   uri: '/',
+  // });
 
   noStore();
 
@@ -40,9 +40,6 @@ const Home = async () => {
 
   return (
     <Main>
-      {process.env.APP_HOST}
-      {process.env.DATABASE_URL}
-      {process.env.APPLICATIONINSIGHTS_CONNECTION_STRING}
       <Section>
         <Container className='space-y-4'>
           <div>

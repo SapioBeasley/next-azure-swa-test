@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --require ./appinsights-preload.js node_modules/next/dist/bin/next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node --require ./appinsights-preload.js node_modules/next/dist/bin/next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@microsoft/applicationinsights-web": "^3.3.1",
     "@prisma/client": "5.18.0",
+    "applicationinsights": "^3.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "csv-parser": "^3.0.0",
