@@ -2,19 +2,8 @@
 
 // const prisma = new PrismaClient();
 
-import {
-  ApplicationInsights,
-  SeverityLevel,
-} from '@microsoft/applicationinsights-web';
-
-const applicationInsights = new ApplicationInsights({
-  config: {
-    connectionString: process.env.APPLICATIONINSIGHTS_CONNECTION_STRING,
-  },
-});
-
-applicationInsights.loadAppInsights();
-applicationInsights.trackPageView();
+import { SeverityLevel } from '@microsoft/applicationinsights-web';
+import applicationInsights from '@/modules/applicationInsights';
 
 const GET = async () => {
   try {

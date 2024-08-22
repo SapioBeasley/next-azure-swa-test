@@ -8,11 +8,18 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import applicationInsights from '@/modules/applicationInsights';
 import dayjs from 'dayjs';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const Home = async () => {
+  applicationInsights.trackPageView({
+    name: 'Home',
+    isLoggedIn: false,
+    uri: '/',
+  });
+
   noStore();
 
   const timeOnServer = dayjs().format('h:mm:ss A');
