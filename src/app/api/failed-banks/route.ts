@@ -2,8 +2,13 @@
 
 // const prisma = new PrismaClient();
 
+import appInsights from 'applicationinsights';
+
+const appInsightsClient = new appInsights.TelemetryClient();
+
 const GET = async () => {
   try {
+    throw new Error('Tersting insights');
     // const totalFailedBanks = await prisma.failedBank.count();
     // const failuresByState = await prisma.failedBank.groupBy({
     //   by: ['state'],
@@ -655,6 +660,13 @@ const GET = async () => {
       { status: 200 }
     );
   } catch (error) {
+    console.error(error);
+
+    appInsightsClient.trackException({
+      exception: error instanceof Error ? error : (error as Error),
+      severity: 'UnknownError',
+    });
+
     let errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
     if (error instanceof Error) {

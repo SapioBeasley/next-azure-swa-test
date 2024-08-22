@@ -35,6 +35,7 @@ const Home = async () => {
     <Main>
       {process.env.APP_HOST}
       {process.env.DATABASE_URL}
+      {process.env.APPLICATIONINSIGHTS_CONNECTION_STRING}
       <Section>
         <Container className='space-y-4'>
           <div>
