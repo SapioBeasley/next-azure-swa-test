@@ -672,10 +672,16 @@ const GET = async () => {
   } catch (error) {
     console.error(error);
 
-    applicationInsights.trackException({
-      exception: error instanceof Error ? error : (error as Error),
-      severityLevel: SeverityLevel.Error,
-    });
+    applicationInsights.trackException(
+      {
+        exception: error instanceof Error ? error : (error as Error),
+        severityLevel: SeverityLevel.Error,
+      },
+      {
+        method: 'GET /api/failed-banks',
+        environment: process.env.NODE_ENV || 'development',
+      }
+    );
 
     let errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
