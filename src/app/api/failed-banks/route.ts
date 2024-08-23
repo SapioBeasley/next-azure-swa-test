@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 import { TelemetryClient } from 'applicationinsights';
-import { applicationInsightsTelemetryClient } from '../../../../appinsights-preload';
+import applicationInsightsTelemetryClient from '../../../../appinsights-preload';
 
-const client: TelemetryClient = applicationInsightsTelemetryClient;
+const client =
+  applicationInsightsTelemetryClient.applicationInsightsTelemetryClient as TelemetryClient;
 
 const prisma = new PrismaClient();
 

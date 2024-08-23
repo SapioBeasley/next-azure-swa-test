@@ -11,11 +11,12 @@ import {
 import dayjs from 'dayjs';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { unstable_noStore as noStore } from 'next/cache';
-import { applicationInsightsTelemetryClient } from '../../appinsights-preload';
 import { randomUUID } from 'crypto';
 import { TelemetryClient } from 'applicationinsights';
+import applicationInsightsTelemetryClient from '../../appinsights-preload';
 
-const client: TelemetryClient = applicationInsightsTelemetryClient;
+const client =
+  applicationInsightsTelemetryClient.applicationInsightsTelemetryClient as TelemetryClient;
 
 const Home = async () => {
   console.log(randomUUID());
