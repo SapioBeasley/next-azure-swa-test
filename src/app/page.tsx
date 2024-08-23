@@ -8,17 +8,22 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-// import applicationInsights from '@/modules/applicationInsights';
 import dayjs from 'dayjs';
 import { CalendarDays, MapPin } from 'lucide-react';
 import { unstable_noStore as noStore } from 'next/cache';
+import { applicationInsightsTelemetryClient } from '../../appinsights-preload';
+import { randomUUID } from 'crypto';
+import { TelemetryClient } from 'applicationinsights';
+
+const client: TelemetryClient = applicationInsightsTelemetryClient;
 
 const Home = async () => {
-  // applicationInsights.trackPageView({
-  //   name: 'Home',
-  //   isLoggedIn: false,
-  //   uri: '/',
-  // });
+  console.log(randomUUID());
+  (client as any).trackPageView({
+    id: randomUUID(),
+    name: 'Home',
+    url: '/',
+  });
 
   noStore();
 

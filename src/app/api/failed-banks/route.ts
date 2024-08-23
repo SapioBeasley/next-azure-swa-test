@@ -1,9 +1,10 @@
 import { PrismaClient } from '@prisma/client';
+import { TelemetryClient } from 'applicationinsights';
+import { applicationInsightsTelemetryClient } from '../../../../appinsights-preload';
+
+const client: TelemetryClient = applicationInsightsTelemetryClient;
 
 const prisma = new PrismaClient();
-
-// import { SeverityLevel } from '@microsoft/applicationinsights-web';
-// import applicationInsights from '@/modules/applicationInsights';
 
 const GET = async () => {
   try {
@@ -653,17 +654,14 @@ const GET = async () => {
     );
   } catch (error) {
     console.error(error);
-
-    // applicationInsights.trackException(
-    //   {
-    //     exception: error instanceof Error ? error : (error as Error),
-    //     severityLevel: SeverityLevel.Error,
-    //   },
-    //   {
-    //     method: 'GET /api/failed-banks',
-    //     environment: process.env.NODE_ENV || 'development',
-    //   }
-    // );
+    client.trackException({
+      exception: error instanceof Error ? error : (error as Error),
+      severity: 'Error',
+      properties: {
+        method: 'GET /api/failed-banks',
+        environment: process.env.NODE_ENV || 'development',
+      },
+    });
 
     let errorMessage = error instanceof Error ? error.message : 'Unknown error';
 
